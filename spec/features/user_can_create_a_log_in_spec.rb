@@ -15,7 +15,7 @@ RSpec.describe "A guest visits the root " do
 
         click_on "Create User"
 
-        expect(current_path).to eq(user_path(user.last))
+        expect(current_path).to eq(user_path(User.last))
         expect(page).to have_content ("Hello Bowser!")
       end
     end
