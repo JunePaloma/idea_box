@@ -14,7 +14,7 @@ describe "in the show page for a user" do
 
       visit user_path(default_user)
       click_on "Log out"
-      expect(current_path).to eq(root)
+      expect(current_path).to eq(root_path)
 
       end
     end
