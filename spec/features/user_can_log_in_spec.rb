@@ -4,7 +4,8 @@ RSpec.describe "a user visits the welcome page" do
   describe "enters their credentials" do
     it "clicks log in and sees their ideas index page" do
 
-      visit '/'
+        create (:user)
+        visit '/'
 
        click_on "Log into your account"
 
@@ -15,7 +16,7 @@ RSpec.describe "a user visits the welcome page" do
 
        click_on "Log in"
 
-       expect(page).to have_content("Hi Bowser!")
+       expect(page).to have_content("Hello Bowser!")
 
 
     end
