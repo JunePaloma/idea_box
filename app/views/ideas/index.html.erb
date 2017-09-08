@@ -1,0 +1,5 @@
+<h1>All your ideas</h1>
+<% @user.ideas.each do |idea| %>
+<%= idea.title %>
+<%= idea.description %>
+<% end %>
