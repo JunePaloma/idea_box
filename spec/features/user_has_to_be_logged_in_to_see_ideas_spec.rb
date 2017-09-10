@@ -17,7 +17,6 @@ feature "when a user visits the ideas page" do
       idea = create(:idea, user_id: user1.id)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
       visit user_ideas_path(user1)
-
       expect(page).to have_content("All your ideas")
       expect(page).not_to have_content(idea.description)
 
