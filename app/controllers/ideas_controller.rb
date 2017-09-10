@@ -14,4 +14,23 @@ end
     @user = User.find(params[:user_id])
   end
 
+  def new
+    @user = User.find(params[:user_id])
+    @categories = Category.all
+    @idea = @user.ideas.new
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+  
+    @idea = @user.ideas.create(idea_params)
+
+    redirect_to user_ideas_path(@user)
+  end
+  private
+
+  def idea_params
+    params.require(:idea).permit(:title, :description, :category_id)
+  end
+
 end

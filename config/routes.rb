@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   resources :users, only:[:new, :create, :show]
 
   resources :users do
-    resources :ideas, only:[:new, :index]
+    resources :ideas, only:[:new, :create, :index]
   end
 
-
   namespace :admin do
-    resources :categories, only: ['index']
+    resources :categories, only: [:index, :new, :create]
   end
 
 
