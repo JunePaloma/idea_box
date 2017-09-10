@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     resources :ideas, only:[:new, :index]
   end
 
+
+  namespace :admin do
+    resources :categories, only: ['index']
+  end
+
+
   get '/login', :to => "sessions#new", :as => 'login'
 
   post '/login', :to => "sessions#create"

@@ -27,40 +27,11 @@ RSpec.describe "A guest visits the root " do
         click_on "Create New User"
         expect(current_path).to eq(new_user_path)
 
-        fill_in "user[username]", with: "Bowser"
+        fill_in "user[username]", with: "Bowser1"
         fill_in "user[password]", with: "woof"
 
         click_on "Create User"
 
-        expect(current_path).to eq(new_user_path)
-      end
-
-      it "fills out a form with a user name that's taken and is not able to create a user profile" do
-
-        visit "/"
-        create(:user)
-        expect(page).to have_link("Create New User")
-        click_on "Create New User"
-        expect(current_path).to eq(new_user_path)
-
-        fill_in "user[username]", with: "Bowser"
-        fill_in "user[password]", with: "woof"
-
-        click_on "Create User"
-
-        expect(current_path).to eq(new_user_path)
-      end
-
-      it "fills out a form with a user name that's taken and is not able to create a user profile" do
-
-        visit "/"
-
-        expect(page).to have_link("Create New User")
-        click_on "Create New User"
-        expect(current_path).to eq(new_user_path)
-
-        fill_in "user[username]", with: "Bowser"
-        click_on "Create User"
         expect(current_path).to eq(new_user_path)
       end
     end
