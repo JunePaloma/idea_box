@@ -26,4 +26,18 @@ describe "a user logs into account" do
       end
     end
 
+    context "an admin user" do
+      it "do can delete categories" do
+        user = User.create(username: "BowserAdmin", password: "test", role: "admin")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        idea = create(:idea, user_id: user.id)
+        visit admin_categories_path
+        click_on "Delete"
+
+        expect(current_path).to eq(admin_categories_path)
+        expect(page).not_to have_content("idea.title")
+
+      end
+    end
+
   end

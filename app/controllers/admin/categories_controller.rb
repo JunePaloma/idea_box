@@ -13,6 +13,11 @@ class Admin::CategoriesController < Admin::BaseController
     redirect_to admin_categories_path
   end
 
+  def destroy
+    @category = Category.find(params[:id])
+    redirect_to admin_categories_path
+  end
+
 private
   def category_params
       params.require(:category).permit(:title)
