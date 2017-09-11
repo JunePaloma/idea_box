@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only:[:new, :create, :show]
 
   resources :users do
-    resources :ideas, only:[:new, :create, :index]
+    resources :ideas
   end
 
   namespace :admin do

@@ -22,10 +22,30 @@ end
 
   def create
     @user = User.find(params[:user_id])
-  
-    @idea = @user.ideas.create(idea_params)
 
+    @idea = @user.ideas.create(idea_params)
     redirect_to user_ideas_path(@user)
+  end
+
+  def show
+    @idea = Idea.find(params[:id])
+  end
+
+  def edit
+    @idea = Idea.find(params[:id])
+    @categories = Category.all
+  end
+
+  def update
+      @idea = Idea.find(params[:id])
+      @idea.update(idea_params)
+      redirect_to user_ideas_path(@idea.user)
+  end
+
+  def destroy
+    @idea = Idea.find(params[:id])
+    @idea.destroy
+    redirect_to user_ideas_path
   end
   private
 

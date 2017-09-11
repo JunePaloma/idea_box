@@ -1,7 +1,7 @@
 <h1>All your ideas</h1>
 <% @user.ideas.each do |idea| %>
-<%= idea.title %>
-<%= idea.description %>
+<p><a href="<%= user_idea_path(@user, idea.id) %>"> <%= idea.title %><a/></p>
+<p><%= idea.description %></p>
 <% end %>
 
 <%= link_to "New idea", new_user_idea_path %>
