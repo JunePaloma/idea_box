@@ -1,5 +1,6 @@
 <h1>Kinds of ideas</h1>
 <% @categories.each do |category|%>
+<ul>
 <p><%= category.title %></p><br>
 <%= link_to "Delete", admin_category_path(category), method: :delete %>
 <% end %>
