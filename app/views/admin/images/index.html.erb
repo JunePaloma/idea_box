@@ -2,7 +2,9 @@
 <% @images.each do |image| %>
 <ul>
 <%= image_tag image.address %>
-<%= image.title %>
+<p> Image title: <%= image.title %></p>
+<%= link_to "Delete", admin_image_path(image), method: :delete %>
+
 <% end %>
 
 <%= link_to "New image", new_admin_image_path %>

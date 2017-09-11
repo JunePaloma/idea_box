@@ -12,7 +12,7 @@ describe "a user logs into account" do
     fill_in "image[title]", with: "Steak"
     fill_in "image[address]", with: "http://www.omahasteaks.com/gifs/os/dd_01_filet.jpg"
     click_on "Create Image"
-
+save_and_open_page
 expect(current_path).to eq(admin_images_path)
 expect(page).to have_css("img[src*='http://www.omahasteaks.com/gifs/os/dd_01_filet.jpg']")
     end
