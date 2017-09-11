@@ -1,0 +1,8 @@
+<h1>All the pretty pictures</h1>
+<% @images.each do |image| %>
+<ul>
+<%= imgage_tag image.address %>
+<%= image.title %>
+<% end %>
+
+<%= link_to "New image", new_admin_image_path %>

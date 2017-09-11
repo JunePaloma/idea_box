@@ -1,0 +1,8 @@
+<h1> Make a new image </h1>
+<%= form_for [:admin, @image] do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+<%= f.label :address %>
+<%= f.text_field :address %>
+<%= f.submit %>
+<% end %>
