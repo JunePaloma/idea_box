@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170910233304) do
+ActiveRecord::Schema.define(version: 20170911012000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170910233304) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "idea_images", force: :cascade do |t|
+    t.bigint "image_id"
+    t.bigint "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["idea_id"], name: "index_idea_images_on_idea_id"
+    t.index ["image_id"], name: "index_idea_images_on_image_id"
   end
 
   create_table "ideas", force: :cascade do |t|
@@ -47,6 +56,7 @@ ActiveRecord::Schema.define(version: 20170910233304) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "idea_images", "ideas"
   add_foreign_key "ideas", "categories"
   add_foreign_key "ideas", "users"
 end

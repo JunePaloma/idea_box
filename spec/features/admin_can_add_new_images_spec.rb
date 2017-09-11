@@ -12,9 +12,18 @@ describe "a user logs into account" do
     fill_in "image[title]", with: "Steak"
     fill_in "image[address]", with: "http://www.omahasteaks.com/gifs/os/dd_01_filet.jpg"
     click_on "Create Image"
-save_and_open_page
 expect(current_path).to eq(admin_images_path)
 expect(page).to have_css("img[src*='http://www.omahasteaks.com/gifs/os/dd_01_filet.jpg']")
+    end
+  end
+  describe "a non-admin user logs in" do
+  it "cannot add an image" do
+    user = User.create(username: "BowserAdmin", password: "test")
+    idea = create(:idea, user_id: user.id)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit new_admin_image_path
+    expect(current_path).not_to eq(admin_images_path)
+    expect(page).to have_content("404")
     end
   end
 end
