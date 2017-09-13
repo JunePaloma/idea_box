@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     resources :images, only: [:index, :new, :create, :destroy]
   end
 
+  resources :ideas do
+    resources :idea_images, only: [:new, :create]
+  end
+
 
   get '/login', :to => "sessions#new", :as => 'login'
 

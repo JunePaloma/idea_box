@@ -1,0 +1,4 @@
+<%= form_for [@idea, @idea_image] do |f| %>
+<%= collection_radio_buttons(:idea_image, :image_id, Image.all, :id, :title) %>
+<%= f.submit %>
+<% end  %>
