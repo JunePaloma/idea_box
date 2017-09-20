@@ -7,7 +7,7 @@ class IdeaImagesController < ApplicationController
 
   def create
   IdeaImage.create(image_id: params[:idea_image][:image_id], idea_id: params[:idea_id])
-  binding.pry
+  redirec_to
   end
 
 
